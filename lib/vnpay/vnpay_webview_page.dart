@@ -47,10 +47,11 @@ class _VNPayWebViewPageState extends State<VNPayWebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF2F6FB),
       appBar: AppBar(
         title: const Text('Thanh toán VNPAY'),
-        backgroundColor: const Color(0xFF003087),
-        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xFF0F1A2C),
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () => Navigator.of(context).pop(null),
@@ -59,11 +60,16 @@ class _VNPayWebViewPageState extends State<VNPayWebViewPage> {
       ),
       body: Stack(
         children: [
-          WebViewWidget(controller: _controller),
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(18)),
+            child: WebViewWidget(controller: _controller),
+          ),
           if (_loading)
-            const Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation(Color(0xFF003087)),
+            Container(
+              color: const Color(0x66FFFFFF),
+              alignment: Alignment.center,
+              child: const CircularProgressIndicator(
+                valueColor: AlwaysStoppedAnimation(Color(0xFF0B4FA9)),
               ),
             ),
         ],
